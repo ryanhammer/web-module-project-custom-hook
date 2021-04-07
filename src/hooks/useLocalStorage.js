@@ -2,19 +2,18 @@ import { useState } from 'react';
 
 const useLocalStorage = (key, initialValue) => {
 
-  // To retrieve an item from localStorage, call localStorage.getItem('itemName')
-  // If that item doesn't exist, it will return undefined
   const [storedValue, setStoredValue] = useState( () => {
-    // Get from local storage by key
-    const item = window.localStorage.getItem(key);
-    // Parse and return stored json or, if undefined, return initialValue
-    return item ? JSON.parse(item) : initialValue;
+    // Define value as check on whether key value exists in local storage
+    // If key value does not exist, it will return undefined
+    const existingKey = window.localStorage.getItem(key);
+    // Use ternary to parse and return stored json or, if undefined, return initialValue
+    return existingKey ? JSON.parse(existingKey) : initialValue;
   });
 
-  const setValue = value => {
-    // Save state
+  const setValue = (value) => {
+    // Save value to state
     setStoredValue(value);
-    // Save to local storage
+    // Save value to local storage to achieve persistence
     window.localStorage.setItem(key, JSON.stringify(value));
   };
 
