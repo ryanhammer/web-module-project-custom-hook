@@ -1,7 +1,7 @@
-import useLocalStorage from './hooks/useLocalStorage';
+import useLocalStorage from './useLocalStorage';
 
 const useDarkMode = () => {
-  const [darkMode, setDarkMode] = useLocalStorage('darkMode', false);
+  const [darkMode, setDarkMode] = useLocalStorage('darkMode');
 
   return [darkMode, setDarkMode];
 }
